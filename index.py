@@ -1,3 +1,4 @@
+print("Phầm mềm tính điểm trung bình")
 # nhập điểm toán 
 toan = int(input("Nhập Điểm Toán : "))
 # nhập Điểm văn 
@@ -10,4 +11,3 @@ tong = toan + van + anh
 tbc = tong / 3 
 # in ra kết quả 
 print("Điểm Trung Bình là : " ,tbc)
-
