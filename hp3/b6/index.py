@@ -1,10 +1,11 @@
 import tkinter as tk
-from tkinter import filedialog, messagebox
-from PIL import Image, ImageTk
+from tkinter import filedialog , messagebox
+from PLI import Image , ImageTk
 
-# Danh sách lưu trữ thông tin người dùng
-users = {}
-
+users={}
+# logic người đăng ký 
+# tạo cửa sổ người đăng ký 
+#tạo cửa sổ người đăng nhập
 def register():
     def save_user():
         username = entry_username.get()
@@ -81,8 +82,9 @@ def register():
     btn_save = tk.Button(frame_main, text="Đăng ký", command=save_user)
     btn_save.pack(pady=10)
 
+
 def login():
-    username = entry_username.get()
+    username = entry_userName.get()
     password = entry_password.get()
     
     if username in users and users[username]["password"] == password:
@@ -90,26 +92,23 @@ def login():
         messagebox.showinfo("Thành công", f"Đăng nhập thành công!\nChào mừng {username} ({gender}).")
     else:
         messagebox.showerror("Lỗi", "Tên đăng nhập hoặc mật khẩu không đúng!")
-
-# Tạo cửa sổ chính
+# tạo cửa sổ chính 
 main_window = tk.Tk()
-main_window.title("Hệ thống đăng nhập")
+main_window.title("Hệ Thống Đăng Nhập")
 main_window.geometry("300x200")
 
-# Giao diện chính
-tk.Label(main_window, text="Tên đăng nhập:").pack(pady=5)
-entry_username = tk.Entry(main_window)
-entry_username.pack(pady=5)
+tk.Label(main_window,text="Tên Đăng Nhập").pack(pady=5)
+entry_userName = tk.Entry(main_window)
+entry_userName.pack(pady=5)
 
-tk.Label(main_window, text="Mật khẩu:").pack(pady=5)
-entry_password = tk.Entry(main_window, show="*")
+tk.Label(main_window,text="Nhập Mật Khẩu ").pack(pady=5)
+entry_password = tk.Entry(main_window , show="*")
 entry_password.pack(pady=5)
 
-btn_login = tk.Button(main_window, text="Đăng nhập", command=login)
+btn_login = tk.Button(main_window,text="Đăng Nhập", command=login)
 btn_login.pack(pady=10)
-
-btn_register = tk.Button(main_window, text="Đăng ký", command=register)
+btn_register = tk.Button(main_window,text="Đăng Ký", command=register)
 btn_register.pack(pady=10)
 
-# Chạy ứng dụng
+# chạy ứng dụng
 main_window.mainloop()
