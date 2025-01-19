@@ -88,8 +88,46 @@ def login():
     if username in users and users[username]["password"] == password:
         gender = users[username]["gender"]
         messagebox.showinfo("Thành công", f"Đăng nhập thành công!\nChào mừng {username} ({gender}).")
+        
+        # Đóng cửa sổ đăng nhập
+        main_window.destroy()
+        
+        # Tạo cửa sổ mới sau khi đăng nhập thành công
+        new_window = tk.Tk()
+        new_window.title(f"Chào mừng {username}")
+        new_window.geometry("400x300")
+
+        # Tạo Menu Bar
+        menu_bar = tk.Menu(new_window)
+        
+        # Thêm menu 'File'
+        file_menu = tk.Menu(menu_bar, tearoff=0)
+        file_menu.add_command(label="Trang chủ", command=lambda: show_message("Trang chủ"))
+        file_menu.add_command(label="Thông tin người dùng", command=lambda: show_message("Thông tin người dùng"))
+        file_menu.add_separator()
+        file_menu.add_command(label="Đăng xuất", command=new_window.quit)  # Đăng xuất và đóng cửa sổ
+        
+        # Thêm menu 'Help'
+        help_menu = tk.Menu(menu_bar, tearoff=0)
+        help_menu.add_command(label="Hướng dẫn", command=lambda: show_message("Hướng dẫn sử dụng"))
+        
+        # Đưa menu vào cửa sổ
+        menu_bar.add_cascade(label="Tùy chọn", menu=file_menu)
+        menu_bar.add_cascade(label="Trợ giúp", menu=help_menu)
+        new_window.config(menu=menu_bar)
+
+        # Hàm để hiển thị thông báo khi chọn menu
+        def show_message(menu_item):
+            messagebox.showinfo("Thông tin", f"Bạn đã chọn: {menu_item}")
+        
+        # Hiển thị một thông báo chào mừng hoặc giao diện mới
+        tk.Label(new_window, text=f"Chào mừng {username}!", font=("Arial", 16)).pack(pady=20)
+
+        # Chạy cửa sổ mới
+        new_window.mainloop()
     else:
         messagebox.showerror("Lỗi", "Tên đăng nhập hoặc mật khẩu không đúng!")
+
 
 # Tạo cửa sổ chính
 main_window = tk.Tk()
