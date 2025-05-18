@@ -21,7 +21,7 @@ food_y = random.randint(0,19)*sanke_part
 
 # snake speed
 clock = pg.time.Clock()
-speed = 3
+speed = 5
 
 # def fun
 def check_vc():
