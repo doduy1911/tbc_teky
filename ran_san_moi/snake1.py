@@ -28,6 +28,12 @@ def score_view():
     if gameplay:
         score_txt = font.render("Điểm của bạn là :{score}")
         screen.blit(score_txt,(0,0))
+        hscore_txt =font.render(f'hightScore :{hight_score}',True,(255,255,255))
+        screen.blit(hscore_txt,(170,0))
+
+    else:
+        note_txt =font.render(f'Press space to play a game :{score}',True,(255,255,255))
+        screen.blit(note_txt,(0,0))
         # điểm cao nhất của bạn
 gameplay = True
 while True:
@@ -63,8 +69,13 @@ while True:
             score+=1
             if score>hight_score:hight_score=score
             # ramdum lại mồi 
-            food_x = random.randint(0,19)*sanke_part
-            food_y = random.randint(0,19)*sanke_part
+            food_x = random.randint(0,19)*snake_part
+            food_y = random.randint(0,19)*snake_part
+
+        for x,y in body_snak:
+            pg.draw.rect(screen,(255,255,255),(x,y,snake_part,snake_part))
+        # draw foood
+            pg.draw.rect(screen,(255,0,0),(food_X,food_y,snake_part,snake_part))
     else:
         x=200
         y=200
