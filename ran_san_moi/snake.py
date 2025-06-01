@@ -3,7 +3,7 @@ import random
 pg.init()
 
 screen = pg.display.set_mode((400, 400))
-pg.display.set_caption("Snake Game")
+pg.display.set_caption("Thầy Duy Đẹp Trai")
 
 # Variables
 snake_part = 20
