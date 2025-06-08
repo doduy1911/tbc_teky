@@ -3,13 +3,13 @@ import random
 pg.init()
 
 screen = pg.display.set_mode((400, 400))
-pg.display.set_caption("Thầy Duy Đẹp Trai")
+pg.display.set_caption("Trò chơi Rắn Săn Mồi")
 
 # Variables
 snake_part = 20
 x = 200
 y = 200
-x_change = y_change = 0
+x_change = y_change = 0    
 
 body_snake = []
 length = 1
@@ -38,12 +38,12 @@ def check_vc():
 def score_view():
     font = pg.font.Font(None, 36)
     if gameplay:
-        score_txt = font.render(f'Score: {score}', True, (255, 255, 255))
+        score_txt = font.render(f'Điểm: {score}', True, (255, 255, 255))
         screen.blit(score_txt, (10, 10))
-        hscore_txt = font.render(f'High Score: {high_score}', True, (255, 255, 255))
+        hscore_txt = font.render(f'Điểm cao nhất: {high_score}', True, (255, 255, 255))
         screen.blit(hscore_txt, (200, 10))
     else:
-        note_txt = font.render('Press SPACE to play again', True, (255, 255, 255))
+        note_txt = font.render('Nhấn nút SPACE để chơi lại', True, (255, 255, 255))
         screen.blit(note_txt, (30, 180))
 
 # Game loop
